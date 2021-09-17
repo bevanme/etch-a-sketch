@@ -2,7 +2,7 @@
 const canvas = document.querySelector('#etch-a-sketch');
 const ctx = canvas.getContext('2d'); // see three.js for examples of 3D
 const shakebutton = document.querySelector('.shake');
-const MOVE_AMOUNT = 5;
+const MOVE_AMOUNT = 10;
 
 // set up our canvas for drawing
 //const width = canvas.width;
@@ -11,11 +11,10 @@ const MOVE_AMOUNT = 5;
 const { width, height } = canvas;
 
 // stylize the line
-let hue = 0;
-ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+ctx.strokeStyle = `hsl(0, 100%, 50%)`;
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 10;
+ctx.lineWidth = 25;
 
 let X = getRandomInt(width);
 let Y = getRandomInt(height);
@@ -52,7 +51,7 @@ function draw({ keyPressed }) {
         default:
             ctx.lineTo(X, Y);
     }
-    ctx.strokeStyle = `hsl(${++hue}, 100%, 50%)`;
+    ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
     ctx.stroke();
 }
 
